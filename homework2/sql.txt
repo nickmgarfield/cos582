@@ -1,0 +1,57 @@
+a) Persons who acted in at least one movie in 2nd half of 19th century and 20th century:
+
+SELECT DISTINCT p.id, p.fname, p.lname, p.gender FROM Person p
+JOIN ActsIn ai ON p.id = ai.pid
+JOIN Movie m ON ai.mid = m.id WHERE m.year BETWEEN 1850 and 1900
+AND EXISTS (
+    SELECT 1 FROM ActsIn ai2 JOIN Movie m2 ON ai2.mid = m2.id WHERE ai2.pid = p.id AND m2.year BETWEEN 1900 AND 1949
+    )
+LIMIT 10;
+
+b) Directors who directed a movie in a leap year
+
+SELECT DISTINCT d.id, d.fname, d.lname FROM Director d
+JOIN Directs dr ON d.id = dr.did
+JOIN Movie m ON dr.mid = m.id
+WHERE m.year % 4 = 0 AND (m.year % 100 != 0 OR m.year % 400 = 0)
+LIMIT 10;
+
+c) Movies that rank better than 'Shrek (20001)'
+
+SELECT m.id, m.name, m.year, m.rank FROM Movie m
+WHERE m.year = (SELECT year FROM Movie WHERE name = 'Shrek (2001)')
+AND m.rank > (SELECT rank FROM Movie WHERE name = 'Shrek (2001)')
+ORDER BY m.rank DESC
+LIMIT 10;
+
+d) Top 10 directors who have directed the most Movies
+
+SELECT d.id, d.fname, d.lname, COUNT(*) AS num FROM Director d
+JOIN Directs dr ON d.id = dr.did
+GROUP BY d.id, d.fname, d.lname
+ORDER BY num DESC
+LIMIT 10;
+
+e) Movies with most and fewest number of actors
+
+SELECT m.id, m.name, m.year, COUNT(DISTINCT ai.pid) AS num_actors FROM Movie m
+JOIN ActsIn ai ON m.id = ai.mid
+GROUP BY  m.id, m.name, m.year
+ORDER BY num_actors DESC
+LIMIT 10;
+
+SELECT m.id, m.name, m.year, COUNT(DISTINCT ai.pid) AS num_actors FROM Movie m
+JOIN ActsIn ai ON m.id = ai.mid
+GROUP BY  m.id, m.name, m.year
+ORDER BY num_actors ASC
+LIMIT 10;
+
+f) Actors who acted in movies by at least 10 distinct directors 
+
+SELECT p.id, p.fname, p.lname, COUNT(DISTINCT dr.did) as num_directors FROM Person P
+JOIN ActsIn ai ON p.id = ai.pid
+JOIN Directs dr ON dr.mid = ai.mid
+GROUP BY p.id, p.fname, p.lname
+HAVING COUNT(DISTINCT dr.did) >= 10
+ORDER BY num_directors DESC
+LIMIT 10;

@@ -1,0 +1,102 @@
+a) Persons who acted in at least one movie in 2nd half of 19th century and 20th century:
+
+  id   |      fname       |    lname     | gender
+-------+------------------+--------------+--------
+  3328 | El Moreno        | Agapito      | M
+ 22713 | Robert           | Baden-Powell | M
+ 29265 | Rutland          | Barrington   | M
+ 35249 | J. Franklin      | Bell         | M
+ 44788 | J. Stuart        | Blackton     | M
+ 46177 | Cornelius        | Bliss        | M
+ 54449 | Charles (III)    | Bradshaw     | M
+ 61751 | William Jennings | Bryan        | M
+ 65260 | Andrew Sheridan  | Burt         | M
+ 70413 | Herbert          | Campbell     | M
+
+b) Directors who directed a movie in a leap year
+
+ id |       fname        |    lname
+----+--------------------+-------------
+  1 | Todd               | 1
+  3 | Lejaren            | a"Hiller
+  5 | Khairiya           | A-Mansour
+  8 | Kodanda Rami Reddy | A.
+ 14 | Mang               | Aag
+ 17 | Safdar             | Aah
+ 22 | Veikko             | Aaltonen
+ 23 | Pσl                | Aam
+ 26 | Douglas            | Aarniokoski
+ 31 | Paul               | Aaron
+
+c) Movies from the same year as 'Shrek (2001)' with a better rank
+
+  id   |                 name                 | year | rank
+--------+--------------------------------------+------+------
+ 346246 | Undercover X (2001)                  | 2001 |   10
+ 308557 | Song for Honest Abe, A (2001)        | 2001 |   10
+  65522 | Clearing, The (2001)                 | 2001 |  9.9
+ 374517 | Zenith (2001)                        | 2001 |  9.9
+ 213772 | Milagro of Boyle Heights, The (2001) | 2001 |  9.8
+  58084 | Cerebrium (2001)                     | 2001 |  9.7
+ 137709 | Halo (2001)                          | 2001 |  9.7
+ 277703 | Richard Roe (2001)                   | 2001 |  9.7
+ 302296 | Simulacra (2001)                     | 2001 |  9.7
+  54879 | Card Sharks (2001/II)                | 2001 |  9.6
+
+d) Top 10 directors who have directed the most Movies
+
+ id   |           fname            |   lname   | num
+-------+----------------------------+-----------+-----
+ 25116 | Dave                       | Fleischer | 616
+ 56530 | Georges                    | MΘliΦs    | 554
+ 30570 | D.W.                       | Griffith  | 530
+  1958 | Gilbert M. "Broncho Billy" | Anderson  | 360
+ 24576 | Louis                      | Feuillade | 345
+ 72184 | Mack                       | Sennett   | 330
+ 41763 | Seymour                    | Kneitel   | 320
+ 26173 | Friz                       | Freleng   | 316
+ 24941 | Bud                        | Fisher    | 312
+ 38415 | Chuck (I)                  | Jones     | 293
+
+ e) Movies with most and fewest number of actors
+
+   id   |                  name                  | year | num_actors
+--------+----------------------------------------+------+------------
+  20625 | Around the World in Eighty Days (1956) | 1956 |       1266
+ 389858 | "General Hospital" (1963)              | 1963 |       1068
+ 385299 | "Crossroads" (1964)                    | 1964 |        893
+ 385824 | "Days of Our Lives" (1965)             | 1965 |        734
+ 380391 | "Another World" (1964)                 | 1964 |        669
+ 400236 | "One Life to Live" (1968)              | 1968 |        656
+ 390771 | "Guiding Light, The" (1952)            | 1952 |        654
+ 405209 | "Shortland Street" (1992)              | 1992 |        614
+ 380713 | "As the World Turns" (1956)            | 1956 |        570
+ 379716 | "All My Children" (1970)               | 1970 |        541
+
+ id  |                   name                    | year | num_actors
+-----+-------------------------------------------+------+------------
+ 268 | "Tis Mother! (1912)                       | 1912 |          1
+ 273 | "Tis the Season to Be Smurfy (1984)       | 1984 |          1
+ 250 | "Swim, Swim..." (1996)                    | 1996 |          1
+ 255 | "Tags": A Short Film (1995)               | 1995 |          1
+ 102 | "Elf" Jukebox (2004)                      | 2004 |          1
+  47 | "88 Dodge Aries (2002)                    | 2002 |          1
+ 217 | "Revenue" and the Girl, The (1911)        | 1911 |          1
+ 227 | "Sagasta", Admiral Dewey"s Pet Pig (1899) | 1899 |          1
+   5 | $1,000 Reward (1923)                      | 1923 |          1
+ 297 | "What"s Your "I.Q."?" Number Two (1940)   | 1940 |          1
+
+f) Actors who acting in movies by at least 10 distinct directors 
+
+    id   |    fname    |   lname   | num_directors
+--------+-------------+-----------+---------------
+ 506067 | Frank       | Welker    |           307
+ 621468 | Bess        | Flowers   |           301
+ 372839 | Lee         | Phelps    |           267
+ 490345 | Robert (I)  | Vaughn    |           245
+ 421983 | John        | Saxon     |           243
+  18826 | Edward      | Asner     |           243
+ 433904 | Martin      | Sheen     |           242
+ 444807 | William (I) | Smith     |           238
+ 304920 | Tim (I)     | Matheson  |           238
+ 704525 | Tress       | MacNeille |           238
