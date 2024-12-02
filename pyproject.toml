@@ -17,6 +17,7 @@ selenium = "^4.25.0"
 matplotlib = "^3.9.2"
 psycopg2 = "^2.9.10"
 meteostat = "^1.6.8"
+statsmodels = "^0.14.4"
 
 
 [tool.poetry.group.dev.dependencies]
