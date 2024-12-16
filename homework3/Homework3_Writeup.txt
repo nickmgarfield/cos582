@@ -1,0 +1,104 @@
+Homework 3 COS 582
+Nick Garfield
+nicholas.garfield@maine.edu
+
+Task 1
+a) 
+MongoDB was the chosen database. A single collection named "movies" was used to store movie, director, and actor information. Relationships between movies, directors, and actors were retained by storing the original identifiers as additional fields. Pandas was used to streamline the preprocessing of these relationships by aggregating and joining the raw data tables. This preprocessed DataFrames were then used to populate the MongoDB movie collection with movie, director, and actor documents. The following document schemas were used: 
+
+Movie:
+    {
+        "doc_type": "movie",
+        "name": string,
+        "year": int
+        "rank": float
+        "movie_id": int,
+        "director_ids": [int], 
+        "actor_ids": [int],
+        "actor_roles": [string]
+    }
+
+Director:
+    {
+        "doc_type": "director",
+        "first_name": string,
+        "last_name": string,
+        "director_id": int,
+        "movie_ids": [int]
+    }
+
+Person: 
+    {
+        "doc_type": "person",
+        "first_name": string,
+        "last_name": string,
+        "gender": string,
+        "person_id": int,
+        "movie_ids": [int],
+        "movie_roles": [string]
+    }
+
+Shard Key: The 'name' field would be used as the shard key.
+
+b)
+The queries in the code produced the following output: 
+
+'Shrek (2001) Document:
+{'_id': ObjectId('675dafae1d3887256e56d070'), 'doc_type': 'movie', 'name': 'Shrek (2001)', 'year': 2001, 'rank': 8.1, 'movie_id': 300229, 'director_ids': [429, 37872], 'actor_ids': [2547, 15921, 41156, 43899, 46276, 69902, 76739, 103007, 118681, 163807, 177746, 251911, 280713, 321301, 335657, 337097, 366715, 394821, 444634, 492299, 493665, 545489, 602370, 624888, 627035], 'actor_roles': ['Duloc Mascot', 'Merry Man', 'Bishop', 'Merry Man', 'Baby Bear', 'Pinocchio/Three Pigs', 'Monsieur Hood', 'Captain of Guards', 'Ogre Hunter', 'Peter Pan', 'Merry Man', 'Blind Mouse/Thelonious', 'Lord Farquaad of Duloc', 'Geppetto/Magic Mirror', 'Donkey', 'Shrek/Blind Mouse/Narrator', 'Ogre Hunter', 'Merry Man', 'Blind Mouse', 'Gingerbread Man', 'Merry Man', 'Wrestling Fan', 'Princess Fiona', 'Old Woman', 'Additional Voices']}
+
+Director(s) of 'Shrek (2001)
+	Andrew Adamson
+	Vicky Jenson
+
+Actors in 'Shrek (2001)'
+	Andrew Adamson
+	Bobby Block
+	Calvin Remsberg
+	Cameron Diaz
+	Chris (VII) Miller
+	Christopher Knights
+	Clive Pearse
+	Cody Cameron
+	Conrad (I) Vernon
+	Eddie (I) Murphy
+	Elisa Gabrielli
+	Guillaume (II) Aretos
+	Jacquie Barnbrook
+	Jean-Paul Vignon
+	Jim Cummings
+	John Bisom
+	John Lithgow
+	Kathleen (I) Freeman
+	Matthew Gonder
+	Michael Galasso
+	Mike Myers
+	Peter Dennis
+	Simon J. Smith
+	Val Bettin
+	Vincent Cassel
+
+
+C) Shard the collection with year for hopefully an evenly distributed dataset. Then create an index on the 'name' field for fast access. This combination allows for access by year then name. 
+
+
+
+Task 2:
+
+The Page Rank algorithm was implemented using Spark RDDs. First, a graph file in txt format containing directed edges was read, unique vertices were extracted, and the number of outgoing edges for each vertex (neighbors) was calculated. To handle nodes without outgoing edges (dangling nodes), additional edges were added to connect the dangling node to every other node. Each vertex was then initialized with a rank of 1.0.
+
+The algorithm iteratively updated vertex ranks, distributing each vertex's rank proportionally to its neighbors by contribution rank(v)/|neighbors(v)|. For each iteration, each vertex's rank was calculated by 0.15 + 0.85 × (contributions from all vertices that have edges
+pointing to the current vertex). After a specified number of iterations, the final ranks were normalized and saved.
+
+The Spark RDD implementation of PageRank used several key methods. 'textFile' was used to read the graph data, while 'map' and 'flatMap' transformed and flattened the data. 'reduceByKey' aggregated values by key, and 'distinct' removed duplicates. The 'join' operation combined datasets based on a common key, and 'collect' gathered results to the system's memory. Finally, 'saveAsTextFile' persisted the results to a file system.
+
+The output of the program was the following text of ranks in a single text file: 
+
+0 0.4605615869850827
+1 0.0375
+2 0.44850091301491685
+3 0.0534375
+
+
+
+Task 3:
+
