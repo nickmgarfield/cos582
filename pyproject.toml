@@ -19,6 +19,9 @@ psycopg2 = "^2.9.10"
 meteostat = "^1.6.8"
 pymongo = "^4.10.1"
 pyspark = "^3.5.3"
+statsmodels = "^0.14.4"
+scikit-learn = "^1.6.0"
+seaborn = "^0.13.2"
 
 
 [tool.poetry.group.dev.dependencies]

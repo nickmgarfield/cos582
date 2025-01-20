@@ -100,5 +100,51 @@ The output of the program was the following text of ranks in a single text file:
 
 
 
-Task 3:
+Task 3: The following is the output from the script `task3_spark_queries.py`
 
+Rank DataFrame:
++------+-------------------+                                                    
+|vertex|               rank|
++------+-------------------+
+|     0| 0.4605615869850827|
+|     1|             0.0375|
+|     2|0.44850091301491685|
+|     3|          0.0534375|
++------+-------------------+
+
+
+Rank of Vertex 2:
++------+-------------------+
+|vertex|               rank|
++------+-------------------+
+|     2|0.44850091301491685|
++------+-------------------+
+
+
+Vertex with Maximum Page Rank:
++------+------------------+
+|vertex|              rank|
++------+------------------+
+|     0|0.4605615869850827|
++------+------------------+
+
+
+Vertex Meanings DataFrame:
++------+------+
+|vertex|person|
++------+------+
+|     0|  Adam|
+|     1|  Lisa|
+|     2|  Bert|
+|     3| Ralph|
++------+------+
+
+Joined Ranks and Meanings DataFrame:
++------+------+-------------------+
+|vertex|person|               rank|
++------+------+-------------------+
+|     0|  Adam| 0.4605615869850827|
+|     1|  Lisa|             0.0375|
+|     2|  Bert|0.44850091301491685|
+|     3| Ralph|          0.0534375|
++------+------+-------------------+
